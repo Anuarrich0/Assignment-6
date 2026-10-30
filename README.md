@@ -107,3 +107,13 @@ classDiagram
 ## Clean Code
 
 Only Demo.main composes the running application. Dependencies are supplied through constructors, fields are initialized eagerly, and no service locators or lazy singletons are used. Each listener and visitor has one operation to own. No Observable, event-bus library, UI, database or network service is required.
+
+## Trade-off proof: new visitor
+
+Commit `Add replacement cost visitor without changing elements` changes exactly:
+
+- `src/main/java/home/ReplacementCostVisitor.java`
+- `src/test/java/home/ReplacementCostTest.java`
+- `README.md`
+
+No element class or Visitor interface changes. The operation estimates a replacement budget using fixed demo prices: lamp 20, thermostat 150, camera 80, lock 60 units. The fixture total is 310. This is Visitor's advantage when operations change more frequently than element types. The cost is one method for each existing type in the new visitor.
