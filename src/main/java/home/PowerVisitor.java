@@ -7,4 +7,5 @@ public final class PowerVisitor implements Visitor<Double> {
     @Override public Double visit(Thermostat thermostat) { return thermostat.watts(); }
     @Override public Double visit(Camera camera) { return camera.recording() ? camera.watts() : 0.0; }
     @Override public Double visit(DoorLock lock) { return lock.watts(); }
+    @Override public Double visit(SmokeDetector detector) { return detector.watts(); }
 }

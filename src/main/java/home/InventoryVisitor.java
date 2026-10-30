@@ -13,4 +13,5 @@ public final class InventoryVisitor implements Visitor<Void> {
     @Override public Void visit(Thermostat thermostat) { return count("thermostat"); }
     @Override public Void visit(Camera camera) { return count("camera"); }
     @Override public Void visit(DoorLock lock) { return count("lock"); }
+    @Override public Void visit(SmokeDetector detector) { return count("smokeDetector"); }
 }

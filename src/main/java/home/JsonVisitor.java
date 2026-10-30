@@ -34,4 +34,5 @@ public final class JsonVisitor implements Visitor<String> {
     @Override public String visit(Thermostat thermostat) { return leaf("thermostat", thermostat.name(), thermostat.watts(), "\"targetCelsius\":" + thermostat.targetCelsius()); }
     @Override public String visit(Camera camera) { return leaf("camera", camera.name(), camera.watts(), "\"recording\":" + camera.recording()); }
     @Override public String visit(DoorLock lock) { return leaf("lock", lock.name(), lock.watts(), "\"locked\":" + lock.locked()); }
+    @Override public String visit(SmokeDetector detector) { return leaf("smokeDetector", detector.name(), detector.watts(), "\"healthy\":" + detector.healthy()); }
 }

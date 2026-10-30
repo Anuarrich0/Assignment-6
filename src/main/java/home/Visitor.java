@@ -7,4 +7,5 @@ public interface Visitor<R> {
     R visit(Thermostat thermostat);
     R visit(Camera camera);
     R visit(DoorLock lock);
+    R visit(SmokeDetector detector);
 }

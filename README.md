@@ -77,6 +77,7 @@ classDiagram
       visit(Thermostat)
       visit(Camera)
       visit(DoorLock)
+      visit(SmokeDetector)
     }
     Subject <|.. EventSource
     Subject <|.. EnergyTracker
@@ -95,6 +96,7 @@ classDiagram
     Element <|.. Thermostat
     Element <|.. Camera
     Element <|.. DoorLock
+    Element <|.. SmokeDetector
     Home "1" *-- "0..*" Room
     Room "1" *-- "0..*" Element
     Element --> Visitor : double dispatch
@@ -102,6 +104,7 @@ classDiagram
     Visitor <|.. InventoryVisitor
     Visitor <|.. SecurityVisitor
     Visitor <|.. JsonVisitor
+    Visitor <|.. ReplacementCostVisitor
 ```
 
 ## Clean Code
@@ -117,3 +120,21 @@ Commit `Add replacement cost visitor without changing elements` changes exactly:
 - `README.md`
 
 No element class or Visitor interface changes. The operation estimates a replacement budget using fixed demo prices: lamp 20, thermostat 150, camera 80, lock 60 units. The fixture total is 310. This is Visitor's advantage when operations change more frequently than element types. The cost is one method for each existing type in the new visitor.
+
+## Trade-off proof: new element
+
+Commit `Add smoke detector and update every visitor` changes exactly:
+
+- `src/main/java/home/SmokeDetector.java`
+- `src/main/java/home/Visitor.java`
+- `src/main/java/home/PowerVisitor.java`
+- `src/main/java/home/InventoryVisitor.java`
+- `src/main/java/home/SecurityVisitor.java`
+- `src/main/java/home/JsonVisitor.java`
+- `src/main/java/home/ReplacementCostVisitor.java`
+- `src/test/java/home/SmokeDetectorTest.java`
+- `README.md`
+
+The fifth leaf adds `visit(SmokeDetector)` to the generic visitor contract and all five visitors. Existing Home, Room and the four original leaves remain unchanged. A smoke detector always consumes its configured watts; unhealthy detectors become security findings; replacement cost is 35 units. The test inserts the new leaf under Home -> Room and exercises every operation.
+
+This is Visitor's cost: adding an element requires changing every operation. For a device schema that changes frequently with few operations, ordinary polymorphism or a different model would be simpler. These commits were made at implementation time; the repository does not claim two weeks of development history.
