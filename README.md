@@ -13,6 +13,24 @@ java -cp target/classes home.Demo 4
 The optional argument controls the ExecutorService worker count (default 3).
 The demo runs three producers: two energy samplers and one motion sensor.
 
+## Project structure
+
+```text
+src/main/java/home/
+  Demo.java       - composition root
+  model/          - home, rooms and device records
+  observer/       - event types, subjects and observer interfaces
+  service/        - five event listeners and integration
+  visitor/        - visitor interface and five operations
+  concurrency/    - producer executor
+src/test/java/home/visitor/
+  HomeTest.java
+  ReplacementCostTest.java
+  SmokeDetectorTest.java
+```
+
+The trade-off commit file lists below use their original paths, before the package reorganization.
+
 ## Design decisions
 
 ### Observer
