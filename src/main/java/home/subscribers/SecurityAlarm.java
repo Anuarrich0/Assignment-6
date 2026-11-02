@@ -1,4 +1,4 @@
-package home.service;
+package home.subscribers;
 
 import home.observer.EventType;
 import home.observer.HomeEvent;

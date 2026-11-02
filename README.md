@@ -18,11 +18,11 @@ The demo runs three producers: two energy samplers and one motion sensor.
 ```text
 src/main/java/home/
   Demo.java       - composition root
-  model/          - home, rooms and device records
+  elements/       - home, rooms and devices
   observer/       - event types, subjects and observer interfaces
-  service/        - five event listeners and integration
+  subscribers/     - five event listeners and integration
   visitor/        - visitor interface and five operations
-  concurrency/    - producer executor
+  ProducerRunner.java - producer executor
 src/test/java/home/visitor/
   HomeTest.java
   ReplacementCostTest.java

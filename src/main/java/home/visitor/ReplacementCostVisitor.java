@@ -1,12 +1,12 @@
 package home.visitor;
 
-import home.model.Camera;
-import home.model.DoorLock;
-import home.model.Home;
-import home.model.Lamp;
-import home.model.Room;
-import home.model.SmokeDetector;
-import home.model.Thermostat;
+import home.elements.Camera;
+import home.elements.DoorLock;
+import home.elements.Home;
+import home.elements.Lamp;
+import home.elements.Room;
+import home.elements.SmokeDetector;
+import home.elements.Thermostat;
 
 public final class ReplacementCostVisitor implements Visitor<Integer> {
     @Override public Integer visit(Home home) { return home.children().stream().mapToInt(r -> r.accept(this)).sum(); }

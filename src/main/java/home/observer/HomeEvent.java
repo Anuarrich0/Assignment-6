@@ -1,6 +1,6 @@
 package home.observer;
 
-import home.model.Room;
+import home.elements.Room;
 
 import java.util.Objects;
 

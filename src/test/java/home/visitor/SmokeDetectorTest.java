@@ -1,8 +1,8 @@
 package home.visitor;
 
-import home.model.Home;
-import home.model.Room;
-import home.model.SmokeDetector;
+import home.elements.Home;
+import home.elements.Room;
+import home.elements.SmokeDetector;
 
 import org.junit.jupiter.api.Test;
 import java.util.List;

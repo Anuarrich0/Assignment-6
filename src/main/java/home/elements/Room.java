@@ -1,12 +1,12 @@
-package home.model;
+package home.elements;
 
 import home.visitor.Visitor;
 
 import java.util.List;
 import java.util.Objects;
 
-public record Home(String name, List<Room> children) implements Element {
-    public Home {
+public record Room(String name, List<Element> children) implements Element {
+    public Room {
         Objects.requireNonNull(name);
         if (name.isBlank()) throw new IllegalArgumentException("Name is required");
         children = List.copyOf(children);

@@ -1,7 +1,7 @@
-package home.service;
+package home.subscribers;
 
-import home.model.Element;
-import home.model.Room;
+import home.elements.Element;
+import home.elements.Room;
 import home.observer.EventSource;
 import home.observer.EventType;
 import home.observer.HomeEvent;

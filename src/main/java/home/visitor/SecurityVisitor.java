@@ -1,13 +1,13 @@
 package home.visitor;
 
-import home.model.Camera;
-import home.model.DoorLock;
-import home.model.Element;
-import home.model.Home;
-import home.model.Lamp;
-import home.model.Room;
-import home.model.SmokeDetector;
-import home.model.Thermostat;
+import home.elements.Camera;
+import home.elements.DoorLock;
+import home.elements.Element;
+import home.elements.Home;
+import home.elements.Lamp;
+import home.elements.Room;
+import home.elements.SmokeDetector;
+import home.elements.Thermostat;
 
 import java.util.ArrayList;
 import java.util.List;
