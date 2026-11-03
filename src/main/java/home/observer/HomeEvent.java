@@ -1,7 +1,5 @@
 package home.observer;
 
-import home.elements.Room;
-
 import java.util.Objects;
 
 public record HomeEvent(EventType type, String room, String device, double value, String detail)
