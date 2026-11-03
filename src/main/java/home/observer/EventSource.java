@@ -19,8 +19,8 @@ public final class EventSource<E extends TypedEvent> implements Subject<E> {
     }
     public void publish(E event) {
         Objects.requireNonNull(event);
-        var recipients = new LinkedHashSet<>(listeners.get(event.type())); // Set исключает повторный вызов слушателя.
-        recipients.addAll(listeners.get(EventType.ALL)); // Добавляем wildcard-подписчиков ко всем событиям.
+        var recipients = new LinkedHashSet<>(listeners.get(event.type()));
+        recipients.addAll(listeners.get(EventType.ALL));
         RuntimeException failure = null;
         for (Observer<E> observer : recipients) {
             try { observer.onEvent(event); }
