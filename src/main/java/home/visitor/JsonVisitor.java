@@ -44,3 +44,4 @@ public final class JsonVisitor implements Visitor<String> {
     @Override public String visit(DoorLock lock) { return leaf("lock", lock.name(), lock.watts(), "\"locked\":" + lock.locked()); }
     @Override public String visit(SmokeDetector detector) { return leaf("smokeDetector", detector.name(), detector.watts(), "\"healthy\":" + detector.healthy()); }
 }
+// Add a wildcard subscription to ALL event types. A wildcard listener receives every event exactly once,even if also subscribes to one specific type

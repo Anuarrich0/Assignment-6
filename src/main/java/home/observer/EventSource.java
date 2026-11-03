@@ -1,6 +1,7 @@
 package home.observer;
 
 import java.util.EnumMap;
+import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArraySet;
 
@@ -18,8 +19,10 @@ public final class EventSource<E extends TypedEvent> implements Subject<E> {
     }
     public void publish(E event) {
         Objects.requireNonNull(event);
+        var recipients = new LinkedHashSet<>(listeners.get(event.type()));
+        recipients.addAll(listeners.get(EventType.ALL));
         RuntimeException failure = null;
-        for (Observer<E> observer : listeners.get(event.type())) {
+        for (Observer<E> observer : recipients) {
             try { observer.onEvent(event); }
             catch (RuntimeException ex) {
                 if (failure == null) failure = new IllegalStateException("Listener failed");
@@ -29,3 +32,4 @@ public final class EventSource<E extends TypedEvent> implements Subject<E> {
         if (failure != null) throw failure;
     }
 }
+// Add a wildcard subscription to ALL event types. A wildcard listener receives every event exactly once,even if also subscribes to one specific type
